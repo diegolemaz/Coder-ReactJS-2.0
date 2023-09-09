@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
 import data from "./products.json";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
-
-const ItemDetailContainer = ({ greeting }) => {
-    const [products, setProducts] = useState([]);
-
-    const getProductsById = (productId) => {
+const ItemDetailContainer = () => {
+    const [prod, setProd] = useState([]);
+    const { itemId } = useParams();
+    const getProductsById = (itemId) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(data.find(prod => prod.id === productId));
+                const productosFiltrados = data.filter(
+                    (item) => item.id === itemId
+                );
+                resolve(productosFiltrados)
             }, 2000);
         });
     };
     useEffect(() => {
-        getProductsById("5").then((res) => {
-            setProducts(res);
+        getProductsById(Number(itemId)).then((res) => {
+            setProd(res);
         });
-    }, []);
+    }, [itemId]);
 
     return (
         <div>
-            <ItemDetail product={products} />
+            <ItemDetail product={prod} />
         </div>
     );
 };

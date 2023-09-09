@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
 import data from "./products.json";
-
 import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
+    const { categoryId } = useParams();
 
-    const getProducts = () => {
+    const getProducts = (categoryId) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(data);
+                if (categoryId !== undefined) {
+                    const productosFiltrados = data.filter(
+                        (item) => item.category === categoryId
+                    );
+                    resolve(productosFiltrados)
+                } else {
+                    resolve(data);
+                }
             }, 2000);
         });
     };
     useEffect(() => {
-        getProducts().then((res) => {
+        getProducts(categoryId).then((res) => {
             setProducts(res);
         });
-    }, []);
+    }, [categoryId]);
 
     return (
         <div>
