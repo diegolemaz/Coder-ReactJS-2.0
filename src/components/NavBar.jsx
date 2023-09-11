@@ -10,15 +10,15 @@ const NavBar = () => {
       <nav>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Link to="/" className="align-middle">M@RKET</Link>
-          </Container>
-          <Container className="me-auto mx-auto">
-            <NavLink to="/category/Womens">Ropa Mujer</NavLink>
-            <NavLink to="/category/Mens">Ropa Hombre</NavLink>
-            <NavLink to="/category/HHDD">HHDD</NavLink>
-            <NavLink to="/category/Mochilas">Mochilas</NavLink>
-            <NavLink to="/category/Monitores">Monitores</NavLink>
-            <Link to="/cart" className="align-middle"><CartWidget /></Link>
+          <Navbar.Brand><Link to="/" className="align-middle">M@RKET</Link></Navbar.Brand>
+          <Nav className="me-auto">
+          <Nav.Link><NavLink to="/category/Womens">Ropa Mujer</NavLink></Nav.Link>
+          <Nav.Link><NavLink to="/category/Mens">Ropa Hombre</NavLink></Nav.Link>
+          <Nav.Link><NavLink to="/category/HHDD">HHDD</NavLink></Nav.Link>
+          <Nav.Link><NavLink to="/category/Mochilas">Mochilas</NavLink></Nav.Link>
+          <Nav.Link><NavLink to="/category/Monitores">Monitores</NavLink></Nav.Link>
+          <Nav.Link><Link to="/cart" className="align-middle"><CartWidget /></Link></Nav.Link>
+          </Nav>
           </Container>
         </Navbar>
       </nav>

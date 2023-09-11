@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import data from "./products.json";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 const ItemDetailContainer = () => {
     const [prod, setProd] = useState([]);
     const { itemId } = useParams();
+    const [loading, setLoading] = useState(true);
     const getProductsById = (itemId) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -17,11 +19,15 @@ const ItemDetailContainer = () => {
         });
     };
     useEffect(() => {
-        getProductsById(Number(itemId)).then((res) => {
-            setProd(res);
-        });
+        getProductsById(Number(itemId))
+            .then((res) => {
+                setProd(res);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [itemId]);
-
+    if (loading) return <Loading />;
     return (
         <div>
             <ItemDetail product={prod} />

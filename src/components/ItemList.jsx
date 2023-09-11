@@ -1,9 +1,9 @@
 import Item from "./Item";
-import CardGroup from 'react-bootstrap/CardGroup';
+import Stack from 'react-bootstrap/Stack';
 
 const ItemList = ({ products }) => {
   return (
-    <CardGroup>
+    <Stack direction="horizontal" style={{justifyContent: "space-evenly"}} >
       {
         products.map((product) => {
           return (
@@ -11,7 +11,7 @@ const ItemList = ({ products }) => {
           )
         })
       }
-    </CardGroup>
+    </Stack>
   );
 };
 

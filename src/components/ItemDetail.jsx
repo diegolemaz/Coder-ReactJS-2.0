@@ -5,8 +5,8 @@ const ItemDetail = ({ product }) => {
   return (
     product.map((product) => {
       return (
-        <Card style={{ width: "36rem" }}>
-          <Card.Img variant="top" src={product.image} />
+        <Card  style={{ width: "36rem",  backgroundColor:"gray" , margin: "2px", textAlign:"center" }}>
+          <Card.Img className="img-thumbnail" variant="top" src={product.image} />
           <Card.Body>
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>{product.description}</Card.Text>

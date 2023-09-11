@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import data from "./products.json";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
     const { categoryId } = useParams();
+    const [loading, setLoading] = useState(true);
 
     const getProducts = (categoryId) => {
         return new Promise((resolve, reject) => {
@@ -22,10 +24,16 @@ const ItemListContainer = ({ greeting }) => {
         });
     };
     useEffect(() => {
-        getProducts(categoryId).then((res) => {
+        getProducts(categoryId)
+        .then((res) => {
             setProducts(res);
+        })
+        .finally(() => {
+            setLoading(false);
         });
-    }, [categoryId]);
+    }, [loading, categoryId]);
+
+    if (loading) return <Loading />;
 
     return (
         <div>
