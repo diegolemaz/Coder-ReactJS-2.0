@@ -6,10 +6,13 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import {CartContext} from "./context/CartContext"
+
 
 function App() {
   return (
     <div className="App">
+      <CartContext.Provider>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -19,6 +22,7 @@ function App() {
         </Routes>
         <FooterX />
       </BrowserRouter>
+      </CartContext.Provider>
     </div>
   );
 }

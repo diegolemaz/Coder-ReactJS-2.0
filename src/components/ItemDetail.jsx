@@ -3,21 +3,17 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = ({ product }) => {
   return (
-    product.map((product) => {
-      return (
-        <Card  style={{ width: "36rem",  backgroundColor:"gray" , margin: "2px", textAlign:"center" }}>
-          <Card.Img className="img-thumbnail" variant="top" src={product.image} />
-          <Card.Body>
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>{product.description}</Card.Text>
-            <h2>{"$" + product.price}</h2>
-            <p>{"Cantidad disponible: " + product.stock}</p>
-            <p>{"Categoría: " + product.category}</p>
-            <ItemCount stock={product.stock} onAdd={(cantidad) => console.log('Cantidad agregada ', cantidad)} />
-          </Card.Body>
-        </Card>
-      );
-    })
+    <Card style={{ width: "36rem", backgroundColor: "gray", margin: "2px", textAlign: "center" }}>
+      <Card.Img className="img-thumbnail" variant="top" src={product.image} />
+      <Card.Body>
+        <Card.Title>{product.title}</Card.Title>
+        <Card.Text>{product.description}</Card.Text>
+        <h2>{"$" + product.price}</h2>
+        <p>{"Cantidad disponible: " + product.stock}</p>
+        <p>{"Categoría: " + product.category}</p>
+        <ItemCount stock={product.stock} onAdd={(cantidad) => console.log('Cantidad agregada ', cantidad)} />
+      </Card.Body>
+    </Card>
   );
 };
 

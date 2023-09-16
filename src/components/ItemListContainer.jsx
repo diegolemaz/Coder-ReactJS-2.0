@@ -24,14 +24,13 @@ const ItemListContainer = ({ greeting }) => {
         });
     };
     useEffect(() => {
+        setLoading(true);
         getProducts(categoryId)
         .then((res) => {
             setProducts(res);
-        })
-        .finally(() => {
-            setLoading(false);
+            setLoading(false);           
         });
-    }, [loading, categoryId]);
+    }, [categoryId]);
 
     if (loading) return <Loading />;
 

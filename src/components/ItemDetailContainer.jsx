@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
     const getProductsById = (itemId) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                const productosFiltrados = data.filter(
+                const productosFiltrados = data.find(
                     (item) => item.id === itemId
                 );
                 resolve(productosFiltrados)
