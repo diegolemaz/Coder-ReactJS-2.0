@@ -5,24 +5,27 @@ import FooterX from "./components/Footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
-import {CartContext} from "./context/CartContext"
+//import { Spinner } from "react-bootstrap";
+import { CartProvider } from "./context/cartContext";
+import { useState } from "react";
 
 
 function App() {
+
+  const [carrito, setCarrito] = useState([]);
   return (
     <div className="App">
-      <CartContext.Provider>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<ItemListContainer greeting="Bienvenid@s a nuestro sitio!" />} />
-          <Route exact path="/category/:categoryId" element={<ItemListContainer greeting="Bienvenid@s a nuestro sitio!" />} />
-          <Route exact path="/item/:itemId" element={<ItemDetailContainer />} />
-        </Routes>
-        <FooterX />
-      </BrowserRouter>
-      </CartContext.Provider>
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route exact path="/" element={<ItemListContainer greeting="Bienvenid@s a nuestro sitio!" />} />
+            <Route exact path="/category/:categoryId" element={<ItemListContainer greeting="Bienvenid@s a nuestro sitio!" />} />
+            <Route exact path="/item/:itemId" element={<ItemDetailContainer />} />
+          </Routes>
+          <FooterX />
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
