@@ -3,6 +3,7 @@ import data from "./products.json";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Loading from "./Loading";
+import {getFirestore, getDoc, doc} from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);

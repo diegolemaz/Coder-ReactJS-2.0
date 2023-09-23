@@ -1,13 +1,21 @@
+import { useContext } from "react";
 import carrIm from "../assets/carritoNav.png";
+import { CartContext } from '../context/cartContext';
+useContext
 
-let cantidadCarrito = 0;
+
 const CartWidget =() =>  {
-    return (
+ const { quantityCart } = useContext(CartContext);
+ 
+ console.log(quantityCart )
+   
+ return (
         <>
         <img src={carrIm} alt="Carrito" height={40}/>
-        <span>{cantidadCarrito}</span>
+        <span>{quantityCart>0 ? quantityCart : null}</span>
         </>
     )
 }
 
 export default CartWidget;
+

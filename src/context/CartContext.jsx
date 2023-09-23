@@ -1,10 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
 
     const [cartList, setCartList] = useState([]);
+
 
 
     // AGREGAR AL CARRITO
@@ -23,12 +24,20 @@ export function CartProvider({ children }) {
 
     // BORRAR ITEM DEL CARRITO
     const removeItem = (id) => {
-        const filterCart = cartList.filter((item) => item.id !== id);
-        setCartList(filterCart);
+        useEffect((filterCart) => {
+            cartList.filter((item) => item.id !== id);
+            setCartList();
+        }, [cartList]);
+    }
+
+    //CANTIDAD CARRITO
+    const quantityCart = () => {
+        return cartList.reduce((acum, item) => acum + item.quantity, 0);
+
     }
 
     return (
-        <CartContext.Provider value={{ cartList, addItem, clear, removeItem }}>
+        <CartContext.Provider value={{ cartList, addItem, clear, removeItem, quantityCart }}>
             {children}
         </CartContext.Provider>
     );

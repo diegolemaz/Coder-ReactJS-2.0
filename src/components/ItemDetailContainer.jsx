@@ -22,8 +22,6 @@ const ItemDetailContainer = () => {
         getProductsById(Number(itemId))
             .then((res) => {
                 setProd(res);
-            })
-            .finally(() => {
                 setLoading(false);
             });
     }, [itemId]);
