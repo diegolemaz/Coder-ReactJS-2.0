@@ -16,9 +16,6 @@ const ItemDetail = ({ product }) => {
     setCantAdd(cantidad);
   };
 
-  console.log(cartList);
-
-
   return (
     <Card style={{ width: "36rem", backgroundColor: "gray", margin: "2px", textAlign: "center" }}>
       <Card.Img className="img-thumbnail" variant="top" src={product.image} />

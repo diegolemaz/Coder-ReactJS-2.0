@@ -6,7 +6,7 @@ import Item from './Item';
 
 
 function Cart() {
-    const { cartList, removeItem, clear } = useContext(CartContext);
+    const { cartList, removeItem, clear, totalPrice } = useContext(CartContext);
 
     return (
 
@@ -24,10 +24,12 @@ function Cart() {
                         <br />
                     </div>
                 ))
+                
             }
             {
                 cartList.length > 0 ?
                     <>
+                       <h2>Precio total: ${(totalPrice()).toFixed(2)}</h2>
                         <Button className="m-3 col-md-2" variant="danger" onClick={clear}>Vaciar carrito</Button>
                         <Link to="/checkout"><Button className="m-3 col-md-2" variant="success">Finalizar compra</Button></Link>
                     </> :

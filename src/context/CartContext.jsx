@@ -6,8 +6,6 @@ export function CartProvider({ children }) {
 
     const [cartList, setCartList] = useState([]);
 
-
-
     // AGREGAR AL CARRITO
     const addItem = (item, quantity) => {
         const itemAdd = { ...item, quantity };
@@ -32,12 +30,18 @@ export function CartProvider({ children }) {
 
     //CANTIDAD CARRITO
     const quantityCart = () => {
-        return cartList.reduce((acum, item) => acum + item.quantity, 0);
-
+        return cartList.reduce((acc, item) => acc + item.quantity, 0);
     }
 
+    // TOTAL DEL CARRITO
+
+    const totalPrice = () => {
+        return cartList.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    }
+
+
     return (
-        <CartContext.Provider value={{ cartList, addItem, clear, removeItem, quantityCart }}>
+        <CartContext.Provider value={{ cartList, addItem, clear, removeItem, quantityCart, totalPrice }}>
             {children}
         </CartContext.Provider>
     );
