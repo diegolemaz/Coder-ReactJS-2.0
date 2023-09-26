@@ -21,14 +21,14 @@ export function CartProvider({ children }) {
     }
 
     // BORRAR ITEM DEL CARRITO
-    const removeItem = (id) => {
-        useEffect((filterCart) => {
-            cartList.filter((item) => item.id !== id);
-            setCartList();
-        }, [cartList]);
+    const removeItem = (product) => {
+
+        const cartFilt = cartList.filter(item => item.id !== product);
+        setCartList(cartFilt);
     }
 
-    //CANTIDAD CARRITO
+
+    // CANTIDAD CARRITO
     const quantityCart = () => {
         return cartList.reduce((acc, item) => acc + item.quantity, 0);
     }
@@ -38,7 +38,6 @@ export function CartProvider({ children }) {
     const totalPrice = () => {
         return cartList.reduce((acc, item) => acc + item.price * item.quantity, 0);
     }
-
 
     return (
         <CartContext.Provider value={{ cartList, addItem, clear, removeItem, quantityCart, totalPrice }}>

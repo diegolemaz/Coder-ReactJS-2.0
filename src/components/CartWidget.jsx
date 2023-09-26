@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import carrIm from "../assets/carritoNav.png";
 import { CartContext } from '../context/cartContext';
-useContext
-
 
 const CartWidget =() =>  {
  const { quantityCart } = useContext(CartContext);

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { CartContext } from '../context/cartContext';
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore";
 //import Loading from "./Loading";
 
 export default function Checkout() {
@@ -27,6 +27,7 @@ export default function Checkout() {
         const order = {
             buyer: { name, email, phone },
             items:  itemsCart,
+            date:  serverTimestamp(),
             total: (totalPrice()).toFixed(2),
         };
       
