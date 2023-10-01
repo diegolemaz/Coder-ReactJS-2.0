@@ -13,18 +13,15 @@ const ItemDetailContainer = () => {
         setLoading(true);
         const db = getFirestore();
         const itemRef = doc(db, "productos", itemId);
-
         getDoc(itemRef)
             .then(snapshot => {
-                setProd( { id: snapshot.id, ...snapshot.data() } );
+                setProd({ id: snapshot.id, ...snapshot.data() });
                 setLoading(false);
             })
             .catch(error => { console.error(error) })
-
     }, [itemId]);
 
     if (loading) return (<Loading />);
-
     return (
         <div>
             <ItemDetail product={prod} />

@@ -1,11 +1,10 @@
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
 function Loading() {
   return (
     <div>
-    <Spinner animation="border" role="status">
-    </Spinner>
-    <span>Loading...</span>
+      <Spinner animation="border" role="status"></Spinner>
+      <span>Loading...</span>
     </div>
   );
 }
