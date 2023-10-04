@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { CartContext } from "../context/cartContext";
+import { CartContext } from "../context/CartContext";
 import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";

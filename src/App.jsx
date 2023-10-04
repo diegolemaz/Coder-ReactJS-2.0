@@ -5,7 +5,7 @@ import FooterX from "./components/Footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./context/cartContext";
+import { CartProvider } from "./context/CartContext";
 import { useState } from "react";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
