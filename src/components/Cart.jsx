@@ -10,12 +10,13 @@ function Cart() {
 
   return (
     <div className="container">
+      <h1>Carrito</h1>
       {cartList.map((item) => (
         <Card key={item.id}>
           <Card.Header as="h5">{item.title}</Card.Header>
           <Card.Body>
             <Card.Title>Precio unitario: ${item.price}</Card.Title>
-            <Image src={item.image} style={{ width: "70px" }} />
+            <Image src={item.image} alt={item.title} style={{ width: "70px" }} />
             <Card.Text>
               <br />
               Cantidad seleccionada: {item.quantity}
@@ -40,7 +41,7 @@ function Cart() {
         </>
       ) : (
         <>
-          <h2>El carrito está vacío, elige productos!</h2>
+          <h3>El carrito está vacío, elige productos!</h3>
           <Link to="/">
             <Button className="m-3 col-md-2" variant="dark">
               Elige productos
